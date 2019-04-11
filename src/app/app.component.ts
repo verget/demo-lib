@@ -14,11 +14,16 @@ export class AppComponent {
     private dialog: MatDialog
   ) {}
   openScheduler() {
-    AngularTimetableComponent.createModalAndGetResult(
-      ['08-04-2019 09:00', '09-04-2019 14:00'],
-      { start: '08:00', end: '18:00' },
-      this.dialog
-    ).subscribe(result => {
+    const config = {
+      data: {
+        title: '11',
+        emptyString: '22',
+        applyString: '33',
+        workingHours: { start: '08:00', end: '18:00' },
+        disabled: ['08-04-2019 09:00', '09-04-2019 14:00']
+      }
+    };
+    AngularTimetableComponent.createModalAndGetResult(config, this.dialog).subscribe(result => {
         console.log(result);
     });
   }

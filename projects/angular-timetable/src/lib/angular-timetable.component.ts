@@ -5,6 +5,19 @@ import * as moment_ from 'moment';
 
 const moment = moment_;
 
+interface TimetableConfig {
+  data: {
+    title: string,
+    emptyString: string,
+    applyString: string,
+    workingHours: {
+      start: string,
+      end: string
+    },
+    disabled: string[]
+  };
+}
+
 @Component({
   selector: 'lib-angular-timetable',
   templateUrl: './angular-timetable.component.html',
@@ -33,13 +46,7 @@ export class AngularTimetableComponent implements OnInit {
     public dialogRef: MatDialogRef<AngularTimetableComponent>
   ) { }
 
-  static createModalAndGetResult(disabled, workingHours, dialogService: MatDialog): Observable<boolean> {
-    const config =  {
-      data: {
-        workingHours,
-        disabled
-      }
-    };
+  static createModalAndGetResult(config: TimetableConfig, dialogService: MatDialog): Observable<boolean> {
     const dialogRef = dialogService.open(AngularTimetableComponent, config);
     return dialogRef.afterClosed();
   }
@@ -73,7 +80,7 @@ export class AngularTimetableComponent implements OnInit {
         time,
         datetime,
         disabled
-      })
+      });
     }
   }
 

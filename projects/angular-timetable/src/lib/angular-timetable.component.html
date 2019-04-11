@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>11</h2>
+<h2 mat-dialog-title>{{ data.title }}</h2>
 <div class="timetable-container">
   <div class="day-line">
     <div class="arrow-left" (click)="changeDay(-1)"></div>
@@ -18,7 +18,7 @@
     <div class="arrow-right" (click)="changeDay(1)"></div>
   </div>
   <div class="timetable">
-    <div *ngIf="!blocks.length" class="no-time">22</div>
+    <div *ngIf="!blocks.length" class="no-time">{{ data.emptyString }}</div>
     <div class="time-block"
          *ngFor="let block of blocks"
          (click)="selectTime(block)"
@@ -31,5 +31,5 @@
 
 <div class="dialog-buttons">
   <button mat-raised-button color="primary" class="button-accept-modal" (click)="confirmAction()"
-          mat-dialog-close>33</button>
+          mat-dialog-close>{{ data.applyString }}</button>
 </div>
