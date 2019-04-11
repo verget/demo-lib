@@ -1,0 +1,125 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.cdk-overlay-pane {
+  min-width: 200px;
+  max-width: 450px;
+  pointer-events: auto;
+  width: 85%;
+  position: static;
+  margin-top: 100px;
+}
+
+.timetable-container {
+  margin-bottom: 15px;
+  .day-line {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    z-index: 2;
+    .arrow-left, .arrow-right {
+      position: absolute;
+      background-image: url('./icon/keyboard-arrow-left.svg');
+      width: 24px;
+      height: 24px;
+      top: 16px;
+      cursor: pointer;
+      z-index: 2;
+      color: #abaaaa;
+    }
+    .arrow-right {
+      right: 0;
+      transform: rotate(180deg);
+    }
+    .day-block {
+      height: 53px;
+      border-radius: 2px;
+      box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
+      background-color: #e3e3e3;
+      text-align: center;
+      flex: 1;
+      padding-top: 5px;
+
+      span {
+        display: block;
+      }
+      .month {
+        color: #555555;
+        font-size: 11px;
+      }
+      .date {
+        color: #555555;
+        font-size: 27px;
+        font-weight: 500;
+      }
+
+      &.active {
+        font-size: 33px;
+        border: solid 1px #2462a0;
+        background-color: #ffffff;
+        border-radius: 5px 5px 3px 3px;
+        padding-top: 0;
+
+        margin-top: -5px;
+        height: 60px;
+        .month, .date {
+          color: #2462a0;
+        }
+        .top-line {
+          height: 10px;
+          background-color: #2462a0;
+          width: 100%;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+  .timetable {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+    margin-top: -2px;
+    .time-block {
+      display: flex;
+      flex: 0 0 33.3333%;
+      height: 36px;
+      cursor: pointer;
+      justify-content: center;
+      box-shadow: 2px 3px 5px 0 #e0e0e0;
+      border: 0.3px solid #e0e0e0;
+      border-left: none;
+      border-top: none;
+      background-color: #ffffff;
+      font-size: 15px;
+      &:nth-child(3n + 1) {
+        border-left: solid 1px #e3e3e3;
+      }
+
+      span {
+        align-self: center;
+      }
+
+      &.active {
+        color: #ffffff;
+        background-color: #2462a0;
+      }
+
+      &.disabled {
+        background-color: #e3e3e3;
+        color: #abaaaa;
+        cursor: no-drop;
+      }
+    }
+
+    .no-time {
+      color: #555555;
+      text-align: center;
+      margin-top: 15px;
+      width: 100%;
+    }
+  }
+}
+button {
+  width: 100%;
+}

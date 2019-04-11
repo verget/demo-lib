@@ -133,6 +133,41 @@
           }
         }
       }
+    },
+    "angular-timetable": {
+      "root": "projects/angular-timetable",
+      "sourceRoot": "projects/angular-timetable/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angular-timetable/tsconfig.lib.json",
+            "project": "projects/angular-timetable/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-timetable/src/test.ts",
+            "tsConfig": "projects/angular-timetable/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-timetable/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-timetable/tsconfig.lib.json",
+              "projects/angular-timetable/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lib-demo"
